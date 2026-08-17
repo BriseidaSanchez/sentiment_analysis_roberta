@@ -1,0 +1,8 @@
+{
+  "accuracy": 0.7599,
+  "macro_f1": 0.759693207877525,
+  "macro_precision": 0.7599555454543747,
+  "macro_recall": 0.7598460907992831,
+  "test_rows": 20000,
+  "source": "extras/test_predictions_ROBERTA_translated.csv"
+}
