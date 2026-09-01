@@ -32,7 +32,7 @@ Per-class F1 scores were 0.78 for Negative, 0.70 for Neutral, and 0.80 for Posit
 
 ## Notebook outputs
 
-The portfolio notebook keeps outputs that help a reviewer assess the work: the final metrics, classification report, confusion matrix, and concise recorded training losses. Package-installation logs, model-download progress, long training bars, and exploratory one-off predictions were removed.
+The main notebook keeps outputs that help a reviewer assess the work: the final metrics, classification report, confusion matrix, etc. 
 
 ## Reproduce the project
 
@@ -48,15 +48,15 @@ jupyter lab
 
 Run the notebooks in this order:
 
-1. `notebooks/data_exploration.ipynb` reproduces the descriptive statistics and visuals used in the presentation.
-2. `notebooks/sentiment_analysis.ipynb` handles translation, fine-tuning, evaluation, and inference.
+1. `notebooks/data_exploration.ipynb` reproduces the descriptive statistics and visuals used in the presentation
+2. `notebooks/sentiment_analysis.ipynb` handles translation, fine-tuning, evaluation, and inference
 
 Two flags near the top control expensive work:
 
-- `FORCE_RETRANSLATE = False`: uses the checked-in translation cache. Regeneration can take approximately two hours.
-- `FORCE_RETRAIN = False`: loads `extras/model_checkpoint/` when available, otherwise it trains the model for three epochs and creates that ignored folder.
+- `FORCE_RETRANSLATE = False`: uses the checked-in translation cache. Regeneration can take approximately 2 h.
+- `FORCE_RETRAIN = False`: loads `extras/model_checkpoint/` when available, otherwise it trains the model for 3 epochs and creates that ignored folder.
 
-The Hugging Face dataset is currently public, so the notebook does not contain or request a hard-coded token. If authentication is needed in another environment, use `huggingface_hub.login()` interactively or an environment secret.
+The Hugging Face dataset is currently public. If authentication is needed in another environment, use `huggingface_hub.login()`
 
 ## Data and model
 
@@ -68,18 +68,18 @@ The translation cache is derived from the cited dataset and retains its attribut
 
 ## Method summary
 
-1. Download and verify the source dataset.
-2. Draw a deterministic 100,000-row sample.
-3. Detect language with FastText and selectively translate comments to English.
-4. Normalize URLs, mentions, hashtags, whitespace, and emojis.
-5. Fine-tune Twitter-RoBERTa for three epochs, freezing its embeddings and first four encoder layers.
-6. Evaluate on a stratified 20% test split.
+1. Download and verify the source dataset
+2. Draw a deterministic 100,000-row sample
+3. Detect language with FastText and selectively translate comments to English
+4. Normalize URLs, mentions, hashtags, whitespace, and emojis
+5. Fine-tune Twitter-RoBERTa for three epochs, freezing its embeddings and first four encoder layers
+6. Evaluate on a stratified 20% test split
 
 ## Limitations
 
-- The labels combine automated sentiment labeling and manual validation.
-- The source dataset includes augmented and repeated comments.
-- The experiment uses a random row-level split, not a group split by video.
-- Translation quality was not manually evaluated.
-- There is no separate validation split because this repository preserves the original experiment design.
-- The result should be treated as a portfolio experiment, not a production benchmark.
+- The labels combine automated sentiment labeling and manual validation
+- The source dataset includes augmented and repeated comments
+- The experiment uses a random row-level split, not a group split by video
+- Translation quality was not manually evaluated
+- There is no separate validation split because this repository preserves the original experiment design
+- The result should be treated as a portfolio experiment, not a production benchmark
