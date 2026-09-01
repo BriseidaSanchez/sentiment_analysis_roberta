@@ -2,7 +2,7 @@
 
 Fine-tuning Twitter-RoBERTa to classify YouTube comments as **Negative**, **Neutral**, or **Positive**.
 
-The project uses a deterministic sample of 100,000 comments, translates non-English text, and adapts a transformer pretrained on social-media language. The final held-out test result was **75.99% accuracy** with **0.7597 macro F1**.
+The project uses a deterministic sample of 100K comments, translates non-English text, and adapts a transformer pretrained on social-media language. The final held-out test result was **75.99% accuracy** with **0.7597 macro F1**.
 
 ## Results
 
